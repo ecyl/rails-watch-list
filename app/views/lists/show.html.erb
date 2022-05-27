@@ -1,7 +1,25 @@
-<h1>To show one list and its deets</h1>
+<h1><%= @list.name %></h1>
 
 <div class="container">
-  <h3><%= @list.name %></h3>
+
+  <% @movies.each do |movie| %>
+  <div>
+    Movie Title: <%= movie.title %>
+  </div>
+
+    <% check_id = movie.id %>
+
+    <% @bookmarks.each do |bookmark| %>
+      <% if bookmark.movie_id == check_id %>
+        Your Bookmark Comment: <%= bookmark.comment %>
+      <% end %>
+    <% end %>
+
+    <%= link_to "Remove", bookmark_path(movie.id), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+  <% end %>
 </div>
 
+<div class="container">
+<%= link_to 'Add new bookmark', new_list_bookmark_path(@list) %> |
 <%= link_to 'Back', lists_path %>
+</div>
