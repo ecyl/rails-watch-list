@@ -7,7 +7,7 @@
 <div class="container">
   <ul>
   <% @lists.each do |list| %>
-    <li><%= link_to list.name, list_path(list) %></li>
+    <li><%= cl_image_tag @list.photo.key, link_to list.name, list_path(list) %></li>
   <% end %>
   </ul>
 </div>
