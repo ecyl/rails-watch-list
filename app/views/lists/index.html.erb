@@ -1,16 +1,18 @@
 <%= render "/shared/navbar" %>
 
-<div class="container">
-  <h1>My Lists</h1>
+<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3))">
+  My Lists
 </div>
 
 <div class="container">
-  <ul>
-  <% @lists.each do |list| %>
-    <li><%= link_to list.name, list_path(list) %></li>
-    <%= cl_image_tag list.photo.key, width: 300 %>
-  <% end %>
-  </ul>
+
+  <div class="card-trip">
+    <% @lists.each do |list| %>
+      <%= cl_image_tag list.photo.key, :crop => "fill" %>
+      <%= link_to list.name, list_path(list) %>
+    <% end %>
+  </div>
+
 </div>
 
 <%= link_to 'Create new list', new_list_path %>
